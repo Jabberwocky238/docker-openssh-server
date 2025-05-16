@@ -21,6 +21,6 @@ docker run -d \
   -e USER_PASSWORD=STILL_MYGO1111dd \
   -e SSH_TUNNEL=true \
   -p 5432:2222 \
-  -v ./sshtun:/config \
-  ghcr.io/jabberwocky238/docker-openssh-server
+  -v /home/ubuntu/sshtun:/config \
+  ghcr.io/jabberwocky238/docker-openssh-server:sha-2fe7c22
 ```

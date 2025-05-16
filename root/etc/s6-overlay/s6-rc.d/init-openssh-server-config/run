@@ -91,23 +91,27 @@ fi
 if [[ "${SSH_TUNNEL}" == "true" ]]; then
     echo "Tunnel support is enabled."
     # 启用SSH隧道支持
-    sed -i 's/#PermitTunnel no/PermitTunnel yes/g' /config/sshd/sshd_config
+    sed -i '/^#PermitTunnel/c\PermitTunnel yes' /config/sshd/sshd_config
+    sed -i '/^PermitTunnel/c\PermitTunnel yes' /config/sshd/sshd_config
     # 启用转发
-    sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /config/sshd/sshd_config
+    sed -i '/^#AllowTcpForwarding/c\AllowTcpForwarding yes' /config/sshd/sshd_config
+    sed -i '/^AllowTcpForwarding/c\AllowTcpForwarding yes' /config/sshd/sshd_config
     # 启用X11转发
-    sed -i 's/#X11Forwarding no/X11Forwarding yes/g' /config/sshd/sshd_config
+    sed -i '/^#X11Forwarding/c\X11Forwarding yes' /config/sshd/sshd_config
+    sed -i '/^X11Forwarding/c\X11Forwarding yes' /config/sshd/sshd_config
     # 启用代理转发
-    sed -i 's/#AllowAgentForwarding yes/AllowAgentForwarding yes/g' /config/sshd/sshd_config
+    sed -i '/^#AllowAgentForwarding/c\AllowAgentForwarding yes' /config/sshd/sshd_config
+    sed -i '/^AllowAgentForwarding/c\AllowAgentForwarding yes' /config/sshd/sshd_config
 else
     echo "Tunnel support is disabled."
     # 禁用SSH隧道支持
-    sed -i 's/#PermitTunnel no/PermitTunnel no/g' /config/sshd/sshd_config
+    sed -i '/^PermitTunnel/c\PermitTunnel no' /config/sshd/sshd_config
     # 禁用转发
-    sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding no/g' /config/sshd/sshd_config
+    sed -i '/^AllowTcpForwarding/c\AllowTcpForwarding no' /config/sshd/sshd_config
     # 禁用X11转发
-    sed -i 's/#X11Forwarding no/X11Forwarding no/g' /config/sshd/sshd_config
+    sed -i '/^X11Forwarding/c\X11Forwarding no' /config/sshd/sshd_config
     # 禁用代理转发
-    sed -i 's/#AllowAgentForwarding yes/AllowAgentForwarding no/g' /config/sshd/sshd_config
+    sed -i '/^AllowAgentForwarding/c\AllowAgentForwarding no' /config/sshd/sshd_config
 fi
 
 # set umask for sftp
