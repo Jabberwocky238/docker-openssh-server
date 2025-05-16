@@ -88,7 +88,7 @@ fi
 
 ### add by jabberwocky238
 # tunnel support
-if [[ -n "${SSH_TUNNEL}" ]]; then
+if [[ "${SSH_TUNNEL}" == "true" ]]; then
     echo "Tunnel support is enabled."
     # 启用SSH隧道支持
     sed -i 's/#PermitTunnel no/PermitTunnel yes/g' /etc/ssh/sshd_config
