@@ -86,6 +86,30 @@ else
     echo "User/password ssh access is disabled."
 fi
 
+### add by jabberwocky238
+# tunnel support
+if [[ -n "${SSH_TUNNEL}" ]]; then
+    echo "Tunnel support is enabled."
+    # 启用SSH隧道支持
+    sed -i 's/#PermitTunnel no/PermitTunnel yes/g' /etc/ssh/sshd_config
+    # 启用转发
+    sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
+    # 启用X11转发
+    sed -i 's/#X11Forwarding no/X11Forwarding yes/g' /etc/ssh/sshd_config
+    # 启用代理转发
+    sed -i 's/#AllowAgentForwarding yes/AllowAgentForwarding yes/g' /etc/ssh/sshd_config
+else
+    echo "Tunnel support is disabled."
+    # 禁用SSH隧道支持
+    sed -i 's/#PermitTunnel no/PermitTunnel no/g' /etc/ssh/sshd_config
+    # 禁用转发
+    sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding no/g' /etc/ssh/sshd_config
+    # 禁用X11转发
+    sed -i 's/#X11Forwarding no/X11Forwarding no/g' /etc/ssh/sshd_config
+    # 禁用代理转发
+    sed -i 's/#AllowAgentForwarding yes/AllowAgentForwarding no/g' /etc/ssh/sshd_config
+fi
+
 # set umask for sftp
 UMASK=${UMASK:-022}
 sed -i "s|/usr/lib/ssh/sftp-server$|/usr/lib/ssh/sftp-server -u ${UMASK}|g" /config/sshd/sshd_config
