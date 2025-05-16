@@ -91,31 +91,31 @@ fi
 if [[ -n "${SSH_TUNNEL}" ]]; then
     echo "Tunnel support is enabled."
     # 启用SSH隧道支持
-    sed -i 's/^#PermitTunnel.*/PermitTunnel yes/' /config/ssh/sshd_config
-    sed -i 's/^PermitTunnel.*/PermitTunnel yes/' /config/ssh/sshd_config
+    sed -i 's/^#PermitTunnel.*/PermitTunnel yes/' /config/sshd/sshd_config
+    sed -i 's/^PermitTunnel.*/PermitTunnel yes/' /config/sshd/sshd_config
     # 启用转发
-    sed -i 's/^#AllowTcpForwarding.*/AllowTcpForwarding yes/' /config/ssh/sshd_config
-    sed -i 's/^AllowTcpForwarding.*/AllowTcpForwarding yes/' /config/ssh/sshd_config
+    sed -i 's/^#AllowTcpForwarding.*/AllowTcpForwarding yes/' /config/sshd/sshd_config
+    sed -i 's/^AllowTcpForwarding.*/AllowTcpForwarding yes/' /config/sshd/sshd_config
     # 启用X11转发
-    sed -i 's/^#X11Forwarding.*/X11Forwarding yes/' /config/ssh/sshd_config
-    sed -i 's/^X11Forwarding.*/X11Forwarding yes/' /config/ssh/sshd_config
+    sed -i 's/^#X11Forwarding.*/X11Forwarding yes/' /config/sshd/sshd_config
+    sed -i 's/^X11Forwarding.*/X11Forwarding yes/' /config/sshd/sshd_config
     # 启用代理转发
-    sed -i 's/^#AllowAgentForwarding.*/AllowAgentForwarding yes/' /config/ssh/sshd_config
-    sed -i 's/^AllowAgentForwarding.*/AllowAgentForwarding yes/' /config/ssh/sshd_config
+    sed -i 's/^#AllowAgentForwarding.*/AllowAgentForwarding yes/' /config/sshd/sshd_config
+    sed -i 's/^AllowAgentForwarding.*/AllowAgentForwarding yes/' /config/sshd/sshd_config
 else
     echo "Tunnel support is disabled."
     # 禁用SSH隧道支持
-    sed -i 's/^#PermitTunnel.*/PermitTunnel no/' /config/ssh/sshd_config
-    sed -i 's/^PermitTunnel.*/PermitTunnel no/' /config/ssh/sshd_config
+    sed -i 's/^#PermitTunnel.*/PermitTunnel no/' /config/sshd/sshd_config
+    sed -i 's/^PermitTunnel.*/PermitTunnel no/' /config/sshd/sshd_config
     # 禁用转发
-    sed -i 's/^#AllowTcpForwarding.*/AllowTcpForwarding no/' /config/ssh/sshd_config
-    sed -i 's/^AllowTcpForwarding.*/AllowTcpForwarding no/' /config/ssh/sshd_config
+    sed -i 's/^#AllowTcpForwarding.*/AllowTcpForwarding no/' /config/sshd/sshd_config
+    sed -i 's/^AllowTcpForwarding.*/AllowTcpForwarding no/' /config/sshd/sshd_config
     # 禁用X11转发
-    sed -i 's/^#X11Forwarding.*/X11Forwarding no/' /config/ssh/sshd_config
-    sed -i 's/^X11Forwarding.*/X11Forwarding no/' /config/ssh/sshd_config
+    sed -i 's/^#X11Forwarding.*/X11Forwarding no/' /config/sshd/sshd_config
+    sed -i 's/^X11Forwarding.*/X11Forwarding no/' /config/sshd/sshd_config
     # 禁用代理转发
-    sed -i 's/^#AllowAgentForwarding.*/AllowAgentForwarding no/' /config/ssh/sshd_config
-    sed -i 's/^AllowAgentForwarding.*/AllowAgentForwarding no/' /config/ssh/sshd_config
+    sed -i 's/^#AllowAgentForwarding.*/AllowAgentForwarding no/' /config/sshd/sshd_config
+    sed -i 's/^AllowAgentForwarding.*/AllowAgentForwarding no/' /config/sshd/sshd_config
 fi
 
 # set umask for sftp
