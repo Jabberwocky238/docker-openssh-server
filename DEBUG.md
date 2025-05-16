@@ -14,7 +14,7 @@ docker run -d \
   -v ./sshtun:/config \
   ghcr.io/jabberwocky238/docker-openssh-server
 
-docker run -d \
+sudo docker run -d \
   --name=sshtun \
   -e PASSWORD_ACCESS=true \
   -e USER_NAME=TOMORI \
